@@ -5,7 +5,11 @@ import styles from "./ChatArea.module.css";
 
 export default function ChatArea({
   submitPrompt,
-}: Readonly<{ submitPrompt: (prompt: string) => void }>) {
+  requestMessage,
+}: Readonly<{
+  submitPrompt: (prompt: string) => void;
+  requestMessage: () => void;
+}>) {
   const [messages, setMessages] = useState<string[]>([]);
   const [inputMessage, setInputMessage] = useState<string>("");
   function handleSubmit(ev: MouseEvent) {
@@ -18,8 +22,8 @@ export default function ChatArea({
   return (
     <div className={styles.main}>
       <div className={styles.trail}>
-        {messages.map((message) => (
-          <div>{message}</div>
+        {messages.map((message, i) => (
+          <pre key={i}>{message}</pre>
         ))}
       </div>
       <form className={styles.form}>
@@ -30,6 +34,9 @@ export default function ChatArea({
         />
         <button type="submit" onClick={handleSubmit}>
           Send
+        </button>
+        <button type="button" onClick={requestMessage}>
+          Recieve
         </button>
       </form>
     </div>

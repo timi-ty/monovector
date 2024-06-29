@@ -10,6 +10,9 @@
 
 .trail {
     flex-grow: 1;
+    padding: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .form {
@@ -22,4 +25,5 @@
 
 .input {
     flex-grow: 1;
+    padding: 8px;
 }

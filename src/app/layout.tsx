@@ -5,8 +5,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MonoVector",
-  description: "Create svgs with AI in seconds",
+  title: "Waterleaf",
+  description:
+    "Describe your frontend in plain English, preview, iterate, copy, paste.",
 };
 
 export default function RootLayout({

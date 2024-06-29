@@ -1,22 +1,27 @@
 "use client";
 
+import { useState } from "react";
 import ChatArea from "./_components/ChatArea";
 import RenderArea from "./_components/RenderArea";
-import useSvgPrompt, { SvgResult } from "./_hooks/useSvgPrompt";
+import usePrompt, { PromptResult } from "./_hooks/usePrompt";
 import styles from "./page.module.css";
 
 export default function Home() {
-  function handleSvgResult(svgResult: SvgResult) {
-    //handle the result here
+  const [result, setResult] = useState<string>("");
+  function handleResult(promptResult: PromptResult) {
+    //handle result here
   }
-  const submitPrompt = useSvgPrompt(handleSvgResult);
+  function handleMessage(message: string) {
+    setResult(message);
+  }
+  const { submitPrompt, getMessage } = usePrompt(handleResult, handleMessage);
   return (
     <main className={styles.main}>
       <div className={styles.left}>
-        <ChatArea submitPrompt={submitPrompt} />
+        <ChatArea submitPrompt={submitPrompt} requestMessage={getMessage} />
       </div>
       <div className={styles.right}>
-        <RenderArea />
+        <RenderArea result={result} />
       </div>
     </main>
   );
